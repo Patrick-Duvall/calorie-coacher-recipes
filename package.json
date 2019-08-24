@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "nyc mocha --exit"
+    "test": "nyc mocha --exit",
+    "seed": "node see_recipes.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
