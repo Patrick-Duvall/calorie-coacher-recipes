@@ -7,6 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     numIngredients: DataTypes.INTEGER,
     ingredientList: DataTypes.STRING,
     cuisineType: DataTypes.STRING,
+    url: DataTypes.STRING,
+    image: DataTypes.STRING,
     servings: DataTypes.INTEGER
   }, {});
   Recipe.associate = function(models) {

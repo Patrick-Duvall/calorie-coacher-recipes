@@ -4,9 +4,12 @@ class RecipeParser {
     this.name = data.recipe.label;
     this.prepTime = parseInt(data.recipe.totalTime);
     this.numIngredients = data.recipe.ingredients.length;
+    this.url = data.recipe.url;
+    this.image = data.recipe.image;
     this.ingredientList = this.makeIngredientString(data.recipe.ingredients)
     this.cuisineType = cuisineType
     this.servings = parseInt(data.recipe.yield)
+    console.log(this);
   }
 
   makeIngredientString(ingredients) {

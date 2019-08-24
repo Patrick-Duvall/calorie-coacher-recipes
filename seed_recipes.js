@@ -11,7 +11,6 @@ async function seedRecipes() {
     })
   let id = process.env.EDAMAM_ID
   let key = process.env.EDAMAM_KEY
-  let calorie_max = '300'
 
   foods.forEach( food => {
     var url = new URL("https://api.edamam.com/search")
@@ -32,6 +31,7 @@ async function seedRecipes() {
       .then(data => {
         let parsedRecipes = data.hits.map(recipeInfo => {
           return new RecipeParser(recipeInfo, params.cuisine_type)
+          console.log(parsedRecipes);
         })
         parsedRecipes.forEach(recipe => {
           Recipe.create(recipe)
