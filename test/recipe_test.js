@@ -21,3 +21,21 @@ describe("tests set up", () => {
         });
       });
     });
+
+    describe("GET /api/v1/recipes/search?food_type=chicken", () => {
+      it("should get all foods record", (done) => {
+        chai.request(app)
+        .get("/api/v1/recipes/search?food_type=chicken")
+        .end((err, res) => {
+          res.should.have.status(200);
+          console.log(res.body);
+          // res.body[0].should.be.a('object');
+          // res.body[0].name.should.equal('pizza')
+          // res.body[0].calories.should.equal(600)
+          // res.body[0].should.not.have.property('createdAt')
+          // res.body[0].should.not.have.property('updatedAt')
+          // res.body.should.have.lengthOf(2);
+          done();
+        });
+      });
+    });
