@@ -1,24 +1,24 @@
 {
   "development": {
-    "username": "root",
+    "username": "vince",
     "password": null,
-    "database": "database_development",
+    "database": "calorie_coacher_recipes_development",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false
   },
   "test": {
-    "username": "root",
+    "username": "vince",
     "password": null,
-    "database": "database_test",
+    "database": "calorie_coacher_recipes_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false
   },
   "production": {
-    "username": "root",
+    "username": "vince",
     "password": null,
-    "database": "database_production",
+    "database": "calorie_coacher_recipes_production",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false
