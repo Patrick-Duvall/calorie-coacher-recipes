@@ -15,7 +15,7 @@ class RecipeParser {
   makeIngredientString(ingredients) {
     var foodString = '';
     ingredients.forEach(ingredient => {
-      foodString = foodString.concat(' ,', ingredient.text)
+      foodString = foodString.concat(' ,', ingredient.text.toLowerCase())
     })
     return foodString;
   }
