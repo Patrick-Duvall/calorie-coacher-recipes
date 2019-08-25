@@ -50,6 +50,7 @@ describe("GET /api/v1/recipes/search?calories=200", () => {
     .end((err, res) => {
       res.should.have.status(200);
       res.body[0].should.be.a('object');
+      res.body.length.should.be.above(1)
       res.body.forEach(recipe => {
         recipe.calories.should.be.below(200)
       })
@@ -64,6 +65,8 @@ describe("GET /api/v1/recipes/search?cuisine_type=chinese", () => {
     .get("/api/v1/recipes/search?cuisine_type=chinese")
     .end((err, res) => {
       res.should.have.status(200);
+      res.body[0].should.be.a('object');
+      res.body.length.should.be.above(1)
       res.body.forEach(recipe => {
         recipe.cuisineType.should.equal('chinese')
       })
