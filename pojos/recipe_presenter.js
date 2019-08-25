@@ -1,7 +1,7 @@
 class RecipePresenter {
   constructor(data) {
     this.calories = data.calories;
-    this.name = data.label;
+    this.name = data.name;
     this.prepTime = data.prepTime;
     this.numIngredients = data.numIngredients
     this.url = data.url;
