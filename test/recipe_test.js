@@ -10,32 +10,64 @@ chai.use(chaiHttp);
 chai.should();
 
 describe("tests set up", () => {
-      it("should work", (done) => {
-        chai.request(app)
-        .get('/api/v1/foods')
-        .end((err, res) => {
-          true.should.equal(true)
-          expect(true).to.equal(true)
-          assert(false != true)
-          done();
-        });
-      });
+  it("should work", (done) => {
+    chai.request(app)
+    .get('/api/v1/foods')
+    .end((err, res) => {
+      true.should.equal(true)
+      expect(true).to.equal(true)
+      assert(false != true)
+      done();
     });
+  });
+});
 
-    describe("GET /api/v1/recipes/search?food_type=chicken", () => {
-      it("should get all foods record", (done) => {
-        chai.request(app)
-        .get("/api/v1/recipes/search?food_type=chicken")
-        .end((err, res) => {
-          res.should.have.status(200);
-          console.log(res.body);
-          // res.body[0].should.be.a('object');
-          // res.body[0].name.should.equal('pizza')
-          // res.body[0].calories.should.equal(600)
-          // res.body[0].should.not.have.property('createdAt')
-          // res.body[0].should.not.have.property('updatedAt')
-          // res.body.should.have.lengthOf(2);
-          done();
-        });
-      });
+describe("GET /api/v1/recipes/search?food_type=chicken", () => {
+  it("should get all foods record", (done) => {
+    chai.request(app)
+    .get("/api/v1/recipes/search?food_type=chicken")
+    .end((err, res) => {
+      res.should.have.status(200);
+      res.body[0].name.split(' ').should.include('Chicken')
+      res.body[0].should.be.a('object');
+      res.body[0].should.have.property('calories')
+      res.body[0].should.have.property('name')
+      res.body[0].should.have.property('prepTime')
+      res.body[0].should.have.property('numIngredients')
+      res.body[0].should.have.property('url')
+      res.body[0].should.have.property('image')
+      res.body[0].should.have.property('cuisineType')
+      res.body[0].should.have.property('servings')
+      done();
     });
+  });
+});
+
+describe("GET /api/v1/recipes/search?calories=200", () => {
+  it("should get all recipes below 200 calories", (done) => {
+    chai.request(app)
+    .get("/api/v1/recipes/search?calories=200")
+    .end((err, res) => {
+      res.should.have.status(200);
+      res.body[0].should.be.a('object');
+      res.body.forEach(recipe => {
+        recipe.calories.should.be.below(200)
+      })
+      done();
+    });
+  });
+});
+
+describe("GET /api/v1/recipes/search?cuisine_type=chinese", () => {
+  it("should get all recipes with chinese cuisine type", (done) => {
+    chai.request(app)
+    .get("/api/v1/recipes/search?cuisine_type=chinese")
+    .end((err, res) => {
+      res.should.have.status(200);
+      res.body.forEach(recipe => {
+        recipe.cuisineType.should.equal('chinese')
+      })
+      done();
+    });
+  });
+});
