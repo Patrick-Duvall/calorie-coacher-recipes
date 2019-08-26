@@ -11,7 +11,7 @@ chai.should();
 describe("GET /api/v1/recipes?sort=ingredient_count", () => {
   it("should get all recipes record", (done) => {
     chai.request(app)
-    .get("/api/v1/recipes?sort=ingredient_count")
+    .get("/api/v1/recipes?sort=numIngredients")
     .end((err, res) => {
       res.should.have.status(200);
       res.body.length.should.equal(396)
