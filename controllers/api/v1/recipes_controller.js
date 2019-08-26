@@ -4,10 +4,10 @@ var Sequelize = require('sequelize')
 // var Op = Sequelize.Op
 
 var index = function (req, res) {
-  console.log(req.query)
   Recipe.findAll({order: [
-    ['numIngredients', 'ASC']
+    [req.query.sort, 'ASC']
   ]
+  //use param to sort here
         })
   .then(recipe_info => {
     let recipes = recipe_info.map(recipe => new RecipePresenter(recipe))
