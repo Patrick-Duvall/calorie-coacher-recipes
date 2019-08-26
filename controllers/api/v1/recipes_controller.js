@@ -1,13 +1,11 @@
 var Recipe = require('../../../models').Recipe;
 var RecipePresenter = require('../../../pojos/recipe_presenter.js');
 var Sequelize = require('sequelize')
-// var Op = Sequelize.Op
 
 var index = function (req, res) {
   Recipe.findAll({order: [
     [req.query.sort, 'ASC']
   ]
-  //use param to sort here
         })
   .then(recipe_info => {
     let recipes = recipe_info.map(recipe => new RecipePresenter(recipe))
