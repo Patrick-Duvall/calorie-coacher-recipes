@@ -15,7 +15,6 @@ Returns all recipes matching supplied params. Params are as follows
     calories: 200,
     prepTime: 75,
     numIngredients: 3,
-    ingredientList, 'chicken, rice, salt, oil'
     cuisine_type: 'chinese',
     servings: 10,
     thumbnail: "https://www.edamam.com/web-img/146/146c072c175df9f407f9516a3f6466eb.jpg",
