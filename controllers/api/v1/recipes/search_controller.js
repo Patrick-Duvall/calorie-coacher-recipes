@@ -22,6 +22,7 @@ var index = function (req, res) {
   .then(recipe_info => {
     let recipes = recipe_info.map(recipe => new RecipePresenter(recipe))
     res.setHeader("Content-Type", "application/json");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.status(200).send(JSON.stringify(recipes));
   })
   .catch(error => {
